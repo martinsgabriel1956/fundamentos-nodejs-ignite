@@ -2,7 +2,12 @@ const express = require('express');
 
 const app = express();
 
+app.use(express.json());
+
 app.get('/courses', (request, response) => {
+  const params = request.query;
+  console.log(params);
+
   response.json([
     "Curso 1",
     "Curso 2",
@@ -11,6 +16,9 @@ app.get('/courses', (request, response) => {
 });
 
 app.post('/courses', (request, response) => {
+  const body = request.body;
+  console.log(body);
+
   response.json([
     "Curso 1",
     "Curso 2",
@@ -29,6 +37,9 @@ app.post('/courses', (request, response) => {
 });
 
 app.put('/courses/:id', (request, response) => {
+  const { id } = request.params;
+  console.log(id);
+
   response.json([
     "Curso 5",
     "Curso 6",
